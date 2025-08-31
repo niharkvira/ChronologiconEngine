@@ -1,0 +1,4 @@
+eventId,eventName,startDate,endDate,parentId,researchValue,description
+12345678-abcd-1234-5678-123456789abc,Sample CSV Event 1,2023-12-01T10:00:00Z,2023-12-01T11:00:00Z,NULL,5,First sample event from CSV
+87654321-dcba-4321-8765-cba987654321,Sample CSV Event 2,2023-12-01T11:30:00Z,2023-12-01T12:30:00Z,12345678-abcd-1234-5678-123456789abc,7,Child event from CSV
+abcdef12-3456-789a-bcde-f01234567890,Sample CSV Event 3,2023-12-01T13:00:00Z,2023-12-01T14:00:00Z,NULL,8,"Event with comma, in description"
