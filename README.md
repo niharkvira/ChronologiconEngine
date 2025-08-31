@@ -200,21 +200,4 @@ ChronologiconEngine/
 ├── sample_*.txt/csv    # Sample data files
 └── database_schema.sql # Database schema
 ```
-
-## 🤝 Contributing
-
-1. Fork the repository from [https://github.com/niharkvira/ChronologiconEngine](https://github.com/niharkvira/ChronologiconEngine)
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow existing code style and conventions
-- Add tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting PR
-
----
-
 For detailed technical information, architecture decisions, and implementation details, see [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md).
