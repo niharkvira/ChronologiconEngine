@@ -13,19 +13,24 @@ A Node.js backend service for ingesting, managing, and querying historical event
 
 1. **Clone and install**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/niharkvira/ChronologiconEngine.git
    cd ChronologiconEngine
    npm install
    ```
 
-2. **Configure environment**
+2. **Quick Setup (Automated)**
    ```bash
-   cp env.example .env
-   # Edit .env with your database credentials
+   # Run the setup script for automated configuration
+   chmod +x setup.sh
+   ./setup.sh
    ```
 
-3. **Setup database**
+3. **Manual Setup (Alternative)**
    ```bash
+   # Configure environment
+   cp env.example .env
+   # Edit .env with your database credentials
+   
    # Create database
    createdb chronologicon_db
    
@@ -36,6 +41,8 @@ A Node.js backend service for ingesting, managing, and querying historical event
 4. **Start server**
    ```bash
    npm start
+   # or for development with auto-reload
+   npm run dev
    ```
 
 Server runs on `http://localhost:3000`
@@ -109,14 +116,27 @@ LOG_LEVEL=info
 
 ## 🧪 Testing
 
+### Sample Data Files
+The project includes several sample data files for testing:
+- `sample_historical_data.txt` - Main sample data in pipe-delimited format
+- `sample_data.csv` - CSV format sample data
+- `sample.csv` - Additional CSV sample data
+
+### API Testing
 ```bash
+# Health check
+curl http://localhost:3000/api/health
+
 # Test with sample data
 curl -X POST http://localhost:3000/api/events/ingest \
   -H "Content-Type: application/json" \
   -d '{"filePath": "'$(pwd)'/sample_historical_data.txt"}'
 
-# Health check
-curl http://localhost:3000/api/health
+# Search events after ingestion
+curl "http://localhost:3000/api/events/search?name=phase&limit=10"
+
+# Get all events
+curl http://localhost:3000/api/events
 ```
 
 ## 📊 Features
@@ -153,13 +173,47 @@ curl http://localhost:3000/api/health
 
 **Logs:** Check `logs/` directory for detailed error information
 
+## 💻 Development
+
+### Available Scripts
+```bash
+npm start          # Start production server
+npm run dev        # Start development server with auto-reload
+npm run db:migrate # Run database migrations
+npm test           # Run tests (if available)
+npm run lint       # Run linting
+```
+
+### Project Structure
+```
+ChronologiconEngine/
+├── src/
+│   ├── config/         # Configuration files
+│   ├── controllers/    # Route controllers
+│   ├── models/         # Data models
+│   ├── services/       # Business logic
+│   ├── routes/         # API routes
+│   ├── middleware/     # Custom middleware
+│   ├── utils/          # Utility functions
+│   └── server.js       # Main server file
+├── logs/               # Application logs
+├── sample_*.txt/csv    # Sample data files
+└── database_schema.sql # Database schema
+```
+
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
+1. Fork the repository from [https://github.com/niharkvira/ChronologiconEngine](https://github.com/niharkvira/ChronologiconEngine)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+### Development Guidelines
+- Follow existing code style and conventions
+- Add tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting PR
 
 ---
 
